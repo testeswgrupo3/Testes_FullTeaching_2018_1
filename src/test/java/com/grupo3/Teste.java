@@ -27,7 +27,7 @@ public class Teste {
          */
         System.setProperty("webdriver.gecko.driver", "drivers/geckodriver");
         driver = new FirefoxDriver();
-        /*System.setProperty("webdriver.chrome.driver", "../drivers/chrome");
+        /*System.setProperty("webdriver.chrome.driver", "drivers/chrome");
         driver = new ChromeDriver();*/   
         driver.get(url);
     }
