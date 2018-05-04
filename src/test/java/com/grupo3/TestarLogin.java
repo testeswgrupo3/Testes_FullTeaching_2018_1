@@ -15,7 +15,7 @@ public class TestarLogin extends Teste{
     
     
     private final String url = "https://accounts.google.com/signup/v2/webcreateaccount?service=accountsettings&continue=https%3A%2F%2Fmyaccount.google.com%2Fintro%3Futm_source%3DOGB%26utm_medium%3Dapp&flowName=GlifWebSignIn&flowEntry=SignUp";
-
+    private final String url2 = Teste.dominio;
     @Before
     public void before() {
         super.conecta(url);

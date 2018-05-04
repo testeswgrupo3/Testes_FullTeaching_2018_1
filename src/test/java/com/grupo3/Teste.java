@@ -17,6 +17,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class Teste {
     
     private  WebDriver driver;
+    public static final String dominio =  "https://atlantis.isti.cnr.it:5000/";
     
     public Teste(){
         
