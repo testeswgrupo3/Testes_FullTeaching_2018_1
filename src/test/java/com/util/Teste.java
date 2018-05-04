@@ -19,6 +19,12 @@ public abstract class Teste {
         driver = new ChromeDriver();*/
         driver.get(url);
     }
+    
+    public void conectar(){
+        System.setProperty("webdriver.gecko.driver", "drivers/geckodriver");
+        driver = new FirefoxDriver();
+        driver.get(DOMINIO);
+    }
 
     public void encerrar() {
         driver.close();
