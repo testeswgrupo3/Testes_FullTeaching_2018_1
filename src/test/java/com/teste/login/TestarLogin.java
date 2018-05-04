@@ -1,5 +1,6 @@
 
-package com.grupo3;
+package com.teste.login;
+import com.grupo3.CadastroGmailPojo;
 import com.util.Teste;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -13,8 +14,8 @@ import org.openqa.selenium.support.PageFactory;
 public class TestarLogin extends Teste{
     
     
-    private final String url = "https://accounts.google.com/signup/v2/webcreateaccount?service=accountsettings&continue=https%3A%2F%2Fmyaccount.google.com%2Fintro%3Futm_source%3DOGB%26utm_medium%3Dapp&flowName=GlifWebSignIn&flowEntry=SignUp";
-    private final String url2 = Teste.DOMINIO;
+    private final String url2 = "https://accounts.google.com/signup/v2/webcreateaccount?service=accountsettings&continue=https%3A%2F%2Fmyaccount.google.com%2Fintro%3Futm_source%3DOGB%26utm_medium%3Dapp&flowName=GlifWebSignIn&flowEntry=SignUp";
+    private final String url = Teste.DOMINIO;
     @Before
     public void before() {
         super.conectar(url);
@@ -34,8 +35,14 @@ public class TestarLogin extends Teste{
     public static void afterClass() {
         
     }
-    
     @Test
+    public void testarDadosCorretos(){
+        PaginaInicial paginaInicial = PageFactory.initElements(super.getDriver(), PaginaInicial.class);
+        paginaInicial.logar("student1@gmail.com","pass");
+        assertTrue(paginaInicial.checkUrl(this.url));
+       
+    }
+   /* @Test
     public void testarCerto(){
         CadastroGmailPojo cadastroGmail = PageFactory.initElements(super.getDriver(), CadastroGmailPojo.class);
         cadastroGmail.logar("Geyko", "Jorno", "gjkon21", "gj098&&&#");
@@ -48,7 +55,9 @@ public class TestarLogin extends Teste{
         CadastroGmailPojo cadastroGmail = PageFactory.initElements(super.getDriver(), CadastroGmailPojo.class);
         cadastroGmail.logar("Diogo", "Souza", "diogosos", "gj098&&&#");
         assertTrue(cadastroGmail.checkUrl(this.url));
-    }
+    }*/
+    
+    
 
     
 }

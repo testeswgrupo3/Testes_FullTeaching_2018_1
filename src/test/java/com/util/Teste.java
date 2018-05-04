@@ -7,7 +7,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public abstract class Teste {
 
     private WebDriver driver;
-    public static final String DOMINIO = "https://atlantis.isti.cnr.it:5000/";
+    public static final String DOMINIO = "https://localhost:5000/";
     
     public void conectar(String url) {
         /**

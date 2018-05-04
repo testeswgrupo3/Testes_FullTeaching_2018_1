@@ -20,11 +20,19 @@ public class PaginaInicialEstudante {
     @FindBy(name= "ConfirmPasswd")
     private WebElement confirmPassword;
     @FindBy(id = "courses-button")
-    private WebElement cursos;
-    @FindBy(id = "phoneNumberId")
-    private WebElement telefone;
-    @FindBy(id = "gradsIdvPhoneNext")
-    private WebElement botaoTelefone;
+    private WebElement coursses;
+    @FindBy(id = "settings-button")
+    private WebElement settings;
+    @FindBy(id = "arrow-drop-down")
+    private WebElement dropDowArrow;
+    @FindBy(id = "logout-button")
+    private WebElement logoutButton;
+    @FindBy(id = "contact-button")
+    private WebElement contac;
+    
+            
+            
+    
     private final WebDriver driver;
     private String url;
     public PaginaInicialEstudante(WebDriver driver){
