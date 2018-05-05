@@ -56,6 +56,11 @@ public class TesteCadastroCurso extends Teste{
         PojoPaginaInicialProfessor paginaInicialProfessor = PageFactory.initElements(super.getDriver(), PojoPaginaInicialProfessor.class);
         paginaInicialProfessor.cadastarNovoCurso("Curso1");
     }
+    @Test
+    public void testEditarCurso() throws Exception {
+        PojoPaginaInicialProfessor paginaInicialProfessor = PageFactory.initElements(super.getDriver(), PojoPaginaInicialProfessor.class);
+        paginaInicialProfessor.editarPrimeiroCurso("Curso2");
+    }
     
     
     
