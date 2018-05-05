@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.teste.login;
+package pojos;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,7 +17,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  *
  * @author luisfelipe
  */
-public class PaginaInicial {
+public class PojoPaginaInicial {
     @FindBy(name= "password")
     private WebElement password;
     @FindBy(name= "email")
@@ -41,7 +41,7 @@ public class PaginaInicial {
     
     private final WebDriver driver;
     private String url;
-    public PaginaInicial(WebDriver driver){
+    public PojoPaginaInicial(WebDriver driver){
         this.driver=driver;
     }
     public void logar(String email, String senha){
@@ -55,18 +55,10 @@ public class PaginaInicial {
         this.name.sendKeys(nome);
         this.password.sendKeys(senha);
         this.confirmPassword.sendKeys(confimacaoSenha);
-        this.check.click();
-        try {
-            wait(100);
-            this.signupConfirmarNovaConta.click();
-        } catch (InterruptedException ex) {
-            Logger.getLogger(PaginaInicial.class.getName()).log(Level.SEVERE, null, ex);
-        }    
+        this.check.click();  
+        this.signupConfirmarNovaConta.click();
     }
      public boolean checkUrl(String url){
-        if(driver.getCurrentUrl().contentEquals(url)){
-            return true;
-        }
-        return true;
+        return !(driver.getCurrentUrl().equals(url));
     }
 }

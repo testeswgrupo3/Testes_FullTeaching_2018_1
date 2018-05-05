@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.grupo3;
+package pojos;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -12,10 +12,10 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
- *
+ * Pagina apos um estudante efetuar login
  * @author luisfelipe
  */
-public class PaginaInicialEstudante {
+public class PojoPaginaInicialEstudante {
 
     @FindBy(name= "ConfirmPasswd")
     private WebElement confirmPassword;
@@ -35,7 +35,7 @@ public class PaginaInicialEstudante {
     
     private final WebDriver driver;
     private String url;
-    public PaginaInicialEstudante(WebDriver driver){
+    public PojoPaginaInicialEstudante(WebDriver driver){
         this.driver=driver;
     }
 }

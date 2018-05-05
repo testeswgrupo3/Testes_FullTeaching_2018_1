@@ -8,8 +8,8 @@
 5. Luis Felipe
 
 ## Testes a Serem Implementados
-- [ ] Realizar login com dados corretos
-- [ ] Realizar login com dados inválidos
+- [x] Realizar login com dados corretos
+- [x] Realizar login com dados inválidos
 - [ ] Cadastrar um curso
 - [ ] Cadastrar curso repetido
 - [ ] Editar curso

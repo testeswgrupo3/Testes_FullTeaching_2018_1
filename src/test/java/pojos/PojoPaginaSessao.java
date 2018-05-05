@@ -3,14 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.grupo3;
+package pojos;
 
-import com.util.Teste;
 
-/**
- *
- * @author luisfelipe
- */
-public class TestarCadastroCurso extends Teste{
-    
+public class PojoPaginaSessao {
+    /**
+    * Pagina após clicar no titulo de uma sessão
+    * @author luisfelipe
+    */
 }
