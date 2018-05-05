@@ -10,9 +10,9 @@
 ## Testes a Serem Implementados
 - [x] Realizar login com dados corretos
 - [x] Realizar login com dados inválidos
-- [ ] Cadastrar um curso
-- [ ] Cadastrar curso repetido
-- [ ] Editar curso
+- [x] Cadastrar um curso
+- [x] Cadastrar curso repetido
+- [x] Editar curso
 - [ ] Inserir inforamções
 - [ ] Cadastrar atividade
 - [ ] Cadastrar varias atividades no mesmo dia

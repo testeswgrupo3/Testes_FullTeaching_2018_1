@@ -59,6 +59,11 @@ public class PojoPaginaInicial {
         this.signupConfirmarNovaConta.click();
     }
      public boolean checkUrl(String url){
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(PojoPaginaInicial.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return !(driver.getCurrentUrl().equals(url));
     }
 }

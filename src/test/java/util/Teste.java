@@ -1,5 +1,6 @@
 package util;
 
+import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -17,6 +18,7 @@ public abstract class Teste {
         driver = new FirefoxDriver();
         /*System.setProperty("webdriver.chrome.driver", "drivers/chrome");
         driver = new ChromeDriver();*/
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get(url);
     }
     

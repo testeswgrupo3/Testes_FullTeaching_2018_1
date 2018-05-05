@@ -6,6 +6,8 @@
 package pojos;
 
 
+import java.util.List;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -29,29 +31,51 @@ public class PojoPaginaInicialProfessor {
     private WebElement addCourse; 
     @FindBy(id = "inputPostCourseName")
     private WebElement nameNewCourse; 
+    @FindBy(id = "inputPutCourseName")
+    private WebElement nameEditCourse; 
     @FindBy(id = "submit-post-course-btn")
     private WebElement confirmNewCourse; 
-    
+    @FindBy(id = "submit-put-course-btn")
+    private WebElement confirmEditCourse; 
       
             
-    @FindBy(css = "div[class^='collection-item'].row session-list-item valign-wrapper.col l2 m2 s2 right-align no-padding-lateral.material-icons course-put-icon")
-    private WebElement editFirsCourse;
-   
+    @FindBy(xpath = "//*[@id='sticky-footer-div']/main/app-dashboard/div/div[3]/div/div[1]/ul/li[1]/div/div[3]/a/i")
+    private WebElement editarPrimeiroCurso;
+    @FindBy(xpath = "//*[@id='sticky-footer-div']/main/app-dashboard/div/div[3]/div/div[1]/ul/li[1]/div/div[2]/span")
+    private WebElement nomePrimeiroCurso;
+    
+    @FindBy(className = "collection-item")
+    private List<WebElement> cursosCadastrados;
+    
+    
     private final WebDriver driver;
 
     public PojoPaginaInicialProfessor(WebDriver driver) {
         this.driver = driver;
     }
     
-    public void cadastarNovoCurso(String nome){
+    public boolean cadastarNovoCurso(String nome){
+        System.out.println("pojos.PojoPaginaInicialProfessor.cadastarNovoCurso()");
         addCourse.click();
         nameNewCourse.sendKeys(nome);
         confirmNewCourse.click();
+        WebElement nomeCursoRescenCadastrado = driver.findElement(By.xpath("//*[@id='sticky-footer-div']/main/app-dashboard/div/div[3]/div/div[1]/ul/li["+cursosCadastrados.size()+"]/div/div[2]/span"));
+        return nome.equals(nomeCursoRescenCadastrado.getText());
+        
     }
-    public void editarPrimeiroCurso(String nome){
-        editFirsCourse.click();
-        nameNewCourse.sendKeys(nome);
-        confirmNewCourse.click();
+    
+    public boolean editarPrimeiroCurso(String nome){
+        System.out.println("pojos.PojoPaginaInicialProfessor.editarPrimeiroCurso()");
+        String nomeAnterior = nomePrimeiroCurso.getText();
+        System.out.println("Nome Anterior = "+nomeAnterior);
+        editarPrimeiroCurso.click();
+        nameEditCourse.clear();
+        nameEditCourse.sendKeys(nome);
+        confirmEditCourse.click();
+        String novoNome = nomePrimeiroCurso.getText();
+        System.out.println("Novo nome = "+novoNome);
+        return (novoNome.equals(nome));
     }
+    
     
 }

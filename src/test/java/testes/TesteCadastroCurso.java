@@ -1,9 +1,11 @@
 package testes;
 
 
+import java.util.Random;
 import util.Teste;
 import org.junit.After;
 import org.junit.AfterClass;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -54,14 +56,26 @@ public class TesteCadastroCurso extends Teste{
     @Test
     public void testCadastroCurso() throws Exception {
         PojoPaginaInicialProfessor paginaInicialProfessor = PageFactory.initElements(super.getDriver(), PojoPaginaInicialProfessor.class);
-        paginaInicialProfessor.cadastarNovoCurso("Curso1");
+        Random aleatorio = new Random(0);
+        assertTrue("CURSO NAO FOI CADASTRADO",paginaInicialProfessor.cadastarNovoCurso("Curso"+aleatorio.nextInt()));
     }
+    
     @Test
     public void testEditarCurso() throws Exception {
         PojoPaginaInicialProfessor paginaInicialProfessor = PageFactory.initElements(super.getDriver(), PojoPaginaInicialProfessor.class);
-        paginaInicialProfessor.editarPrimeiroCurso("Curso2");
+        assertTrue("FALHA AO EDITAR O CURSO",paginaInicialProfessor.editarPrimeiroCurso("curso editado 333"));
     }
     
+    @Test
+    public void cadastrarCursoRepetido() throws Exception {
+        PojoPaginaInicialProfessor paginaInicialProfessor = PageFactory.initElements(super.getDriver(), PojoPaginaInicialProfessor.class);
+        Random aleatorio = new Random(10);
+        int num = aleatorio.nextInt();
+        Thread.sleep(1000);
+        assertTrue("CURSO NAO FOI CADASTRADO",paginaInicialProfessor.cadastarNovoCurso("Curso"+num));
+        Thread.sleep(3000);
+        assertFalse("CURSO REPETIDO CADASTRADO",paginaInicialProfessor.cadastarNovoCurso("Curso"+num));
+    }
     
     
 }
