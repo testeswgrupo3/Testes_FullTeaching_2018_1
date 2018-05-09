@@ -58,7 +58,6 @@ public class TesteCadastroCurso extends Teste{
     @Test
     public void testCadastroCurso() throws Exception {
         PojoPaginaInicialProfessor paginaInicialProfessor = PageFactory.initElements(super.getDriver(), PojoPaginaInicialProfessor.class);
-        Random aleatorio = new Random(0);
         assertTrue("CURSO NAO FOI CADASTRADO",paginaInicialProfessor.cadastarNovoCurso(data+"_CT_testCadastroCurso_Curso"+aleatorio.nextInt()));
     }
     
@@ -71,7 +70,6 @@ public class TesteCadastroCurso extends Teste{
     @Test
     public void cadastrarCursoRepetido() throws Exception {
         PojoPaginaInicialProfessor paginaInicialProfessor = PageFactory.initElements(super.getDriver(), PojoPaginaInicialProfessor.class);
-        Random aleatorio = new Random(10);
         int num = aleatorio.nextInt();
         String nomeCurso = data+"_CT_cadastrarCursoRepetido_Curso"+num;
         Thread.sleep(1000);

@@ -41,7 +41,7 @@ public class PojoPaginaInicialProfessor {
     private WebElement confirmEditCourse; 
       
             
-    @FindBy(className = "material-icons course-put-icon")
+    @FindBy(css = "i.material-icons.course-put-icon")
     private List<WebElement> listEditarCurso;
     @FindBy(className = "collection-item")
     private List<WebElement> cursosCadastrados;
@@ -85,13 +85,14 @@ public class PojoPaginaInicialProfessor {
     public int selecionarCurso(String nome){
         int i = 0;
         for(WebElement c : nomesCurso){
-            System.out.println(c.getText());
             if(c.getText().equals(nome)){
                 cursosCadastrados.get(i).click();
+                 System.out.println("Curso Selecionado"+c.getText());
                 return i;
             }
             i++;
         }
+        System.out.println("Curso informado não cadastrado");
         return -1;
     }
     

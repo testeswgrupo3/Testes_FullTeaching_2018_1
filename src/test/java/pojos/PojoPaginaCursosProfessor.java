@@ -116,7 +116,6 @@ public class PojoPaginaCursosProfessor {
         texBoxInfoCurso.sendKeys(informacoes);
         sendInfoCurso.click();
         WebElement infoCurso = driver.findElement(By.xpath("//*[@id=\"md-tab-content-0-0\"]/div/div[2]/p[1]"));
-        System.out.println("CVDSAGDSFDSAFDSFSDAFDSFSADFSDFSDAFSADFDSF  "+infoCurso.getText());
         if(informacoes.equals(infoCurso.getText())){
             return true;
         } else{
