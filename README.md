@@ -13,7 +13,7 @@
 - [x] Cadastrar um curso
 - [x] Cadastrar curso repetido
 - [x] Editar curso
-- [ ] Inserir inforamções
+- [x] Inserir inforamções
 - [ ] Cadastrar atividade
 - [ ] Cadastrar varias atividades no mesmo dia
 - [ ] Visualizar atividade em um curso

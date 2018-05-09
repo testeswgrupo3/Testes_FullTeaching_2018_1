@@ -89,10 +89,8 @@ public class TesteCadastroCurso extends Teste{
         int numCursoSeleicionado= paginaInicialProfessor.selecionarCurso(nomeCurso);
         assertTrue(numCursoSeleicionado>0);
         Thread.sleep(1000);
-        
         PojoPaginaCursosProfessor paginaCursosProfessor = PageFactory.initElements(super.getDriver(), PojoPaginaCursosProfessor.class);
-        paginaCursosProfessor.setNumOrdemCurso(numCursoSeleicionado);
-        assertFalse("Não foi possível alterar informaçẽos do curso corretamente", paginaCursosProfessor.inserirInformacoes("Olha essa infomacao cara"));
+        assertTrue("Não foi possível alterar informaçẽos do curso corretamente", paginaCursosProfessor.inserirInformacoes("Olha essa infomacao cara"));
     }
     
     

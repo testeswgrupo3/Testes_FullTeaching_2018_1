@@ -21,8 +21,6 @@ public class PojoPaginaCursosProfessor {
     * não sei se é necessário criar uma para cada uma dessas abas
     * @author luisfelipe
     */
-    int numOrdemCurso = -1;
-    
     @FindBy(xpath = " //*[@id='md-tab-label-0-0']/div")
     private WebElement homeCurso;
     @FindBy(xpath = " //*[@id=\"edit-course-info\"]")
@@ -31,8 +29,8 @@ public class PojoPaginaCursosProfessor {
     private WebElement texBoxInfoCurso;
     @FindBy(xpath = "//*[@id='send-info-btn']")
     private WebElement sendInfoCurso;
-    @FindBy(className = "ql-editor ql-editor-custom") 
-    private WebElement infoCurso;
+    /*@FindBy(xpath = "//*[@id=\"md-tab-content-1-0\"]/div/div[2]/p[1]") /// caso o curso tenha informacao vai ser carregado se nao tiver  nao encontra esse elemento
+    private WebElement infoCurso;*/
     
     @FindBy(xpath = "//*[@id='md-tab-label-0-0']/div")
     private WebElement forumCurso;
@@ -111,18 +109,19 @@ public class PojoPaginaCursosProfessor {
         
     public PojoPaginaCursosProfessor(WebDriver driver){
         this.driver=driver;
-         
-    }
-    public void setNumOrdemCurso(int numumOrdemCurso){
-        this.numOrdemCurso = numumOrdemCurso;
     }
     public boolean inserirInformacoes(String informacoes){
         editInfoCursoBnt.click();
         texBoxInfoCurso.clear();
         texBoxInfoCurso.sendKeys(informacoes);
         sendInfoCurso.click();
-        System.out.println(infoCurso.getText());
-        return informacoes.equals(infoCurso.getText());
+        WebElement infoCurso = driver.findElement(By.xpath("//*[@id=\"md-tab-content-0-0\"]/div/div[2]/p[1]"));
+        System.out.println("CVDSAGDSFDSAFDSFSDAFDSFSADFSDFSDAFSADFDSF  "+infoCurso.getText());
+        if(informacoes.equals(infoCurso.getText())){
+            return true;
+        } else{
+            return false;
+          }
     }
     
 }
