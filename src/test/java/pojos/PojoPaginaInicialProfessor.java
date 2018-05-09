@@ -7,6 +7,8 @@ package pojos;
 
 
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -39,14 +41,12 @@ public class PojoPaginaInicialProfessor {
     private WebElement confirmEditCourse; 
       
             
-    @FindBy(xpath = "//*[@id='sticky-footer-div']/main/app-dashboard/div/div[3]/div/div[1]/ul/li[1]/div/div[3]/a/i")
-    private WebElement editarPrimeiroCurso;
-    @FindBy(xpath = "//*[@id='sticky-footer-div']/main/app-dashboard/div/div[3]/div/div[1]/ul/li[1]/div/div[2]/span")
-    private WebElement nomePrimeiroCurso;
-    
+    @FindBy(className = "material-icons course-put-icon")
+    private List<WebElement> listEditarCurso;
     @FindBy(className = "collection-item")
     private List<WebElement> cursosCadastrados;
-    
+    @FindBy(className = "title")
+    private List<WebElement> nomesCurso;
     
     private final WebDriver driver;
 
@@ -59,6 +59,11 @@ public class PojoPaginaInicialProfessor {
         addCourse.click();
         nameNewCourse.sendKeys(nome);
         confirmNewCourse.click();
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(PojoPaginaInicialProfessor.class.getName()).log(Level.SEVERE, null, ex);
+        }
         WebElement nomeCursoRescenCadastrado = driver.findElement(By.xpath("//*[@id='sticky-footer-div']/main/app-dashboard/div/div[3]/div/div[1]/ul/li["+cursosCadastrados.size()+"]/div/div[2]/span"));
         return nome.equals(nomeCursoRescenCadastrado.getText());
         
@@ -66,16 +71,28 @@ public class PojoPaginaInicialProfessor {
     
     public boolean editarPrimeiroCurso(String nome){
         System.out.println("pojos.PojoPaginaInicialProfessor.editarPrimeiroCurso()");
-        String nomeAnterior = nomePrimeiroCurso.getText();
+        String nomeAnterior = nomesCurso.get(0).getText();
         System.out.println("Nome Anterior = "+nomeAnterior);
-        editarPrimeiroCurso.click();
+        listEditarCurso.get(0).click();
         nameEditCourse.clear();
         nameEditCourse.sendKeys(nome);
         confirmEditCourse.click();
-        String novoNome = nomePrimeiroCurso.getText();
+        String novoNome = nomesCurso.get(0).getText();
         System.out.println("Novo nome = "+novoNome);
         return (novoNome.equals(nome));
     }
     
+    public int selecionarCurso(String nome){
+        int i = 0;
+        for(WebElement c : nomesCurso){
+            System.out.println(c.getText());
+            if(c.getText().equals(nome)){
+                cursosCadastrados.get(i).click();
+                return i;
+            }
+            i++;
+        }
+        return -1;
+    }
     
 }

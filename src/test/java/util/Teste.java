@@ -1,5 +1,7 @@
 package util;
 
+import java.util.Date;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -9,6 +11,8 @@ public abstract class Teste {
 
     private WebDriver driver;
     public static final String DOMINIO = "https://localhost:5000/";
+    public static Date data = new Date();
+    public static Random aleatorio = new Random(0);
     
     public void conectar(String url) {
         /**
