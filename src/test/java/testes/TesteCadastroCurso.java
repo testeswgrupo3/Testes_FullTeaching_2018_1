@@ -58,20 +58,21 @@ public class TesteCadastroCurso extends Teste{
     @Test
     public void testCadastroCurso() throws Exception {
         PojoPaginaInicialProfessor paginaInicialProfessor = PageFactory.initElements(super.getDriver(), PojoPaginaInicialProfessor.class);
-        assertTrue("CURSO NAO FOI CADASTRADO",paginaInicialProfessor.cadastarNovoCurso(data+"_CT_testCadastroCurso_Curso"+aleatorio.nextInt()));
+        assertTrue("CURSO NAO FOI CADASTRADO",paginaInicialProfessor.cadastarNovoCurso(data+"_testCadastroCurso_Curso"+aleatorio.nextInt()));
     }
     
     @Test
     public void testEditarCurso() throws Exception {
         PojoPaginaInicialProfessor paginaInicialProfessor = PageFactory.initElements(super.getDriver(), PojoPaginaInicialProfessor.class);
-        assertTrue("FALHA AO EDITAR O CURSO",paginaInicialProfessor.editarPrimeiroCurso(data+"_curso editado 333"));
+        assertTrue("CURSO NAO FOI CADASTRADO",paginaInicialProfessor.cadastarNovoCurso(data+"_cursoParaEditar"+aleatorio.nextInt()));
+        assertTrue("FALHA AO EDITAR O CURSO",paginaInicialProfessor.editarUltimoCursoCadastrado(data+"_Curso Editado"));
     }
     
     @Test
     public void cadastrarCursoRepetido() throws Exception {
         PojoPaginaInicialProfessor paginaInicialProfessor = PageFactory.initElements(super.getDriver(), PojoPaginaInicialProfessor.class);
         int num = aleatorio.nextInt();
-        String nomeCurso = data+"_CT_cadastrarCursoRepetido_Curso"+num;
+        String nomeCurso =data+"_cadastrarCursoRepetido_Curso"+num;
         Thread.sleep(1000);
         assertTrue("CURSO NAO FOI CADASTRADO",paginaInicialProfessor.cadastarNovoCurso(nomeCurso));
         Thread.sleep(1000);
@@ -81,11 +82,10 @@ public class TesteCadastroCurso extends Teste{
     @Test
     public void inserirInformaçõesCurso() throws InterruptedException{
         PojoPaginaInicialProfessor paginaInicialProfessor = PageFactory.initElements(super.getDriver(), PojoPaginaInicialProfessor.class);
-        String nomeCurso = data+"_CT_inserirInformaçõesCurso_Curso" + aleatorio.nextInt();
+        String nomeCurso =data+"_inserirInformaçõesCurso_Curso" + aleatorio.nextInt();
         assertTrue("CURSO NAO FOI CADASTRADO",paginaInicialProfessor.cadastarNovoCurso(nomeCurso));
         Thread.sleep(1000);
-        int numCursoSeleicionado= paginaInicialProfessor.selecionarCurso(nomeCurso);
-        assertTrue(numCursoSeleicionado>0);
+        assertTrue("NAO FOI POSSIVEL SELECIONAR UM CURSO",paginaInicialProfessor.selecionarUltimoCursoCadastrado());
         Thread.sleep(1000);
         PojoPaginaCursosProfessor paginaCursosProfessor = PageFactory.initElements(super.getDriver(), PojoPaginaCursosProfessor.class);
         assertTrue("Não foi possível alterar informaçẽos do curso corretamente", paginaCursosProfessor.inserirInformacoes("Olha essa infomacao cara"));

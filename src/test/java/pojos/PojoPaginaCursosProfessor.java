@@ -122,5 +122,13 @@ public class PojoPaginaCursosProfessor {
             return false;
           }
     }
+    public boolean goToAtividades(){
+        try {
+            
+        } catch (Exception e) {
+            Logger.getLogger(PojoPaginaInicialProfessor.class.getName()).log(Level.SEVERE, null, e);
+            return false;
+        }
+    }
     
 }

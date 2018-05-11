@@ -45,7 +45,7 @@ public class PojoPaginaInicialProfessor {
     private List<WebElement> listEditarCurso;
     @FindBy(className = "collection-item")
     private List<WebElement> cursosCadastrados;
-    @FindBy(className = "title")
+    @FindBy(css = "span.title")
     private List<WebElement> nomesCurso;
     
     private final WebDriver driver;
@@ -69,31 +69,32 @@ public class PojoPaginaInicialProfessor {
         
     }
     
-    public boolean editarPrimeiroCurso(String nome){
+    public boolean editarUltimoCursoCadastrado(String nome){
         System.out.println("pojos.PojoPaginaInicialProfessor.editarPrimeiroCurso()");
         String nomeAnterior = nomesCurso.get(0).getText();
         System.out.println("Nome Anterior = "+nomeAnterior);
-        listEditarCurso.get(0).click();
+        listEditarCurso.get(listEditarCurso.size()-1).click();
         nameEditCourse.clear();
         nameEditCourse.sendKeys(nome);
         confirmEditCourse.click();
-        String novoNome = nomesCurso.get(0).getText();
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(PojoPaginaInicialProfessor.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        String novoNome = nomesCurso.get(nomesCurso.size()-1).getText();
         System.out.println("Novo nome = "+novoNome);
         return (novoNome.equals(nome));
     }
     
-    public int selecionarCurso(String nome){
-        int i = 0;
-        for(WebElement c : nomesCurso){
-            if(c.getText().equals(nome)){
-                cursosCadastrados.get(i).click();
-                 System.out.println("Curso Selecionado"+c.getText());
-                return i;
-            }
-            i++;
+    public boolean selecionarUltimoCursoCadastrado(){
+        try {
+             cursosCadastrados.get(cursosCadastrados.size()-1).click();
+             return true;
+        } catch (Exception e) {
+             Logger.getLogger(PojoPaginaInicialProfessor.class.getName()).log(Level.SEVERE, null, e);
+             return false;
         }
-        System.out.println("Curso informado não cadastrado");
-        return -1;
     }
     
 }
