@@ -36,6 +36,10 @@ public class PojoPaginaCursosProfessor {
     private WebElement forumCurso;
     @FindBy(xpath = "//*[@id=\"edit-forum-icon\"]")
     private WebElement ativarForumCursoBnt;
+    @FindBy(xpath = "//*[@id=\"put-delete-modal\"]/div/div/form/div[1]/label")
+    private WebElement checkBoxActivateForum;
+    @FindBy(xpath = " //*[@id=\"put-modal-btn\"]")
+    private WebElement sendActivateFroum;
     @FindBy(xpath = "//*[@id=\"add-entry-icon\"]")
     private WebElement newForumCursoBnt;
     @FindBy(className = "message-itself")
@@ -141,7 +145,14 @@ public class PojoPaginaCursosProfessor {
     }
     public boolean iniciarForum(String titulo,String comentario){
         try {
-            newForumCursoBnt.click();
+            try {
+                newForumCursoBnt.click();
+            } catch (Exception e) {
+                Logger.getLogger(PojoPaginaInicialProfessor.class.getName()).log(Level.SEVERE, null, e);
+                if(!ativarForum()) return false;
+                Thread.sleep(1000);
+                newForumCursoBnt.click();
+            }
             tituloForum.sendKeys(titulo);
             inputNewComment.sendKeys(comentario);
             sendNewComment.click();
@@ -158,7 +169,37 @@ public class PojoPaginaCursosProfessor {
             return false;
         }
     }
-    public void inserirComentario(String comentario){
-
+    public boolean ativarForum(){
+        try {
+            ativarForumCursoBnt.click();
+            checkBoxActivateForum.click();
+            sendActivateFroum.click();
+            return true;
+        } catch (Exception e) {
+            Logger.getLogger(PojoPaginaInicialProfessor.class.getName()).log(Level.SEVERE, null, e);
+            return false;
+        }
     }
+    public boolean selecionarUltimoForum(){
+        try {
+            forumsDisponiveis.get(forumsDisponiveis.size()-1).click();
+            return true;
+        } catch (Exception e) {
+            Logger.getLogger(PojoPaginaInicialProfessor.class.getName()).log(Level.SEVERE, null, e);
+            return false;
+        } 
+    }
+    
+    public boolean inserirComentarioNoForum(String comentario){
+         try {
+            newCommetForumCursoBnt.click();
+            inputNewComment.sendKeys(comentario);
+            sendNewComment.click();
+            return comentarios.get(comentarios.size()-1).getText().equals(comentario);
+        } catch (Exception e) {
+            Logger.getLogger(PojoPaginaInicialProfessor.class.getName()).log(Level.SEVERE, null, e);
+            return false;
+        }
+    }
+    
 }
