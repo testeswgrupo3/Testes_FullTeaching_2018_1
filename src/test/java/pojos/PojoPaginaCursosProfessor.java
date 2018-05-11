@@ -32,14 +32,14 @@ public class PojoPaginaCursosProfessor {
     /*@FindBy(xpath = "//*[@id=\"md-tab-content-1-0\"]/div/div[2]/p[1]") /// caso o curso tenha informacao vai ser carregado se nao tiver  nao encontra esse elemento
     private WebElement infoCurso;*/
     
-    @FindBy(xpath = "//*[@id='md-tab-label-0-0']/div")
+    @FindBy(xpath = "//*[@id=\"md-tab-label-0-2\"]/div")
     private WebElement forumCurso;
     @FindBy(xpath = "//*[@id=\"edit-forum-icon\"]")
     private WebElement ativarForumCursoBnt;
     @FindBy(xpath = "//*[@id=\"add-entry-icon\"]")
     private WebElement newForumCursoBnt;
-    @FindBy(className = "entry-title waves-effect")
-    private List<WebElement> listaEntradasForum;
+    @FindBy(className = "message-itself")
+    private List<WebElement> comentarios;
      
     @FindBy(xpath = "//*[@id=\"row-of-comments\"]/div[1]/div[2]/a/i")
     private WebElement newCommetForumCursoBnt;
@@ -47,6 +47,17 @@ public class PojoPaginaCursosProfessor {
     private List<WebElement> answerComments;
     @FindBy(className = "message-itself forum-comment-msg")
     private List<WebElement> listaComents;
+    @FindBy(xpath = "//*[@id=\"inputTitle\"]")
+    private WebElement tituloForum;
+    @FindBy(xpath = "//*[@id=\"inputComment\"]")
+    private WebElement inputNewComment;
+    @FindBy(xpath = "//*[@id=\"post-modal-btn\"]")
+    private WebElement sendNewComment;
+    @FindBy(css= "li.entry-title.waves-effect.teacher-forum")
+    private List<WebElement> forumsDisponiveis;
+    @FindBy(css = "div.col.l6.m6.s6")
+    private List<WebElement> titulosForums;
+    
     
     
     @FindBy(xpath = "//*[@id='md-tab-label-0-0']/div")
@@ -82,10 +93,7 @@ public class PojoPaginaCursosProfessor {
     private WebElement InputNameGrupFile;
     @FindBy(xpath = "//*[@id=\"put-modal-btn\"]")
     private WebElement SendNameGrupFile;
-    //*[@id="input-file-title"]
-    /**
-     * kkkk Como dar um selct file não sei
-     */
+   
     
     
     @FindBy(xpath = "//*[@id='md-tab-label-0-0']/div")
@@ -122,13 +130,35 @@ public class PojoPaginaCursosProfessor {
             return false;
           }
     }
-    public boolean goToAtividades(){
+    public boolean selecionarAbaForum(){
         try {
-            
+            forumCurso.click();
+            return true;
         } catch (Exception e) {
             Logger.getLogger(PojoPaginaInicialProfessor.class.getName()).log(Level.SEVERE, null, e);
             return false;
         }
     }
-    
+    public boolean iniciarForum(String titulo,String comentario){
+        try {
+            newForumCursoBnt.click();
+            tituloForum.sendKeys(titulo);
+            inputNewComment.sendKeys(comentario);
+            sendNewComment.click();
+            Thread.sleep(1000);
+            forumsDisponiveis.get(forumsDisponiveis.size()-1).click();
+            WebElement tituloForum = driver.findElement(By.xpath("//*[@id=\"row-of-comments\"]/div[1]/div[1]/div/div[1]"));                          
+            if(tituloForum.getText().equals(titulo)){
+                Thread.sleep(1000);
+                return comentarios.get(0).getText().equals(comentario);
+            } 
+            else return false;
+        } catch (Exception e) {
+            Logger.getLogger(PojoPaginaInicialProfessor.class.getName()).log(Level.SEVERE, null, e);
+            return false;
+        }
+    }
+    public void inserirComentario(String comentario){
+
+    }
 }

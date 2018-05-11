@@ -17,7 +17,7 @@
 - [ ] Cadastrar atividade
 - [ ] Cadastrar varias atividades no mesmo dia
 - [ ] Visualizar atividade em um curso
-- [ ] Postar comentário no fórum
+- [x] Postar comentário no fórum
 - [ ] Postar comentário em branco no fórum
 - [ ] Editar um comentário no fórum
 - [ ] Enviar arquivo em curso
