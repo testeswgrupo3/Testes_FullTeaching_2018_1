@@ -43,6 +43,8 @@ public class TesteForum extends Teste{
         PojoPaginaInicial paginaInicial = PageFactory.initElements(super.getDriver(), PojoPaginaInicial.class);
         paginaInicial.logar("teacher@gmail.com","pass");
         assertTrue(paginaInicial.checkUrl(Teste.DOMINIO)); 
+        PojoPaginaInicialProfessor paginaInicialProfessor = PageFactory.initElements(super.getDriver(), PojoPaginaInicialProfessor.class);
+        assertTrue("NAO FOI POSSIVEL SELECIONAR UM CURSO",paginaInicialProfessor.selecionarUltimoCursoCadastrado());
     }
 
     @After
@@ -62,24 +64,18 @@ public class TesteForum extends Teste{
     
     @Test
     public void postarComentario() {
-           PojoPaginaInicialProfessor paginaInicialProfessor = PageFactory.initElements(super.getDriver(), PojoPaginaInicialProfessor.class);
-           assertTrue("NAO FOI POSSIVEL SELECIONAR UM CURSO",paginaInicialProfessor.selecionarUltimoCursoCadastrado());
            PojoPaginaCursosProfessor paginaCursosProfessor = PageFactory.initElements(super.getDriver(), PojoPaginaCursosProfessor.class);
            assertTrue("NÃO FOI POSSÍVEL IR A ABA FÓRUM",paginaCursosProfessor.selecionarAbaForum());
            assertTrue("NÃO FOI POSSÍVEL CRIAR O FORUM",paginaCursosProfessor.iniciarForum(data+"_postarComentario", "meu comentario"));
     }
     @Test
     public void criarForumComComentarioEmBranco() {
-           PojoPaginaInicialProfessor paginaInicialProfessor = PageFactory.initElements(super.getDriver(), PojoPaginaInicialProfessor.class);
-           assertTrue("NAO FOI POSSIVEL SELECIONAR UM CURSO",paginaInicialProfessor.selecionarUltimoCursoCadastrado());
            PojoPaginaCursosProfessor paginaCursosProfessor = PageFactory.initElements(super.getDriver(), PojoPaginaCursosProfessor.class);
            assertTrue("NÃO FOI POSSÍVEL IR A ABA FÓRUM",paginaCursosProfessor.selecionarAbaForum());
            assertFalse("FOI POSSÍVEL CRIAR O FORUM COM COMENTARIO EM BRANCO",paginaCursosProfessor.iniciarForum(data+"criarForumComComentarioEmBranco", ""));
     }
     @Test
     public void postarComentarioEmBranco() throws InterruptedException {
-           PojoPaginaInicialProfessor paginaInicialProfessor = PageFactory.initElements(super.getDriver(), PojoPaginaInicialProfessor.class);
-           assertTrue("NAO FOI POSSIVEL SELECIONAR UM CURSO",paginaInicialProfessor.selecionarUltimoCursoCadastrado());
            PojoPaginaCursosProfessor paginaCursosProfessor = PageFactory.initElements(super.getDriver(), PojoPaginaCursosProfessor.class);
            assertTrue("NÃO FOI POSSÍVEL IR A ABA FÓRUM",paginaCursosProfessor.selecionarAbaForum());
            assertTrue("NÃO FOI POSSÍVEL CRIAR O FORUM",paginaCursosProfessor.iniciarForum(data+"postarComentarioEmBranco", "primeiro comentario do fórum"));
