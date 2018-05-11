@@ -64,16 +64,24 @@ public class PojoPaginaCursosProfessor {
     
     
     
-    @FindBy(xpath = "//*[@id='md-tab-label-0-0']/div")
+    @FindBy(xpath = "//*[@id=\"md-tab-label-0-1\"]/div")
     private WebElement sessionsCurso;
-    @FindBy(xpath = "//*[@id=\"add-session-icon\"]")
+    @FindBy(xpath = "//*[@id=\"md-tab-content-0-1\"]/div/div/a/i")
     private WebElement addSessionCursoBnt;
     @FindBy(className = "edit-session-icon material-icons forum-icon")
-    private List<WebElement> listEditSessionCursoBnt;                        ///li identifica qual sessão
-    @FindBy(className = "col l7 m6 s6 session-ready")
-    private WebElement listSessions;
-    
-    
+    private List<WebElement> listEditSessionCursoBnt;                       
+    @FindBy(css = "li.session-data")
+    private List<WebElement> listSessions;
+    @FindBy(xpath = "//*[@id=\"inputTitle\"]")
+    private WebElement tituloSessao;
+    @FindBy(xpath = "//*[@id=\"inputComment\"]")
+    private WebElement descricaoSessao;
+    @FindBy(xpath = "//*[@id=\"inputDate\"]")
+    private WebElement dataSessao;
+    @FindBy(xpath = "//*[@id=\"inputTime\"]")
+    private WebElement horaSessao;
+    @FindBy(xpath = "//*[@id=\"post-modal-btn\"]")
+    private WebElement sendNewSession;
     
     @FindBy(xpath = "//*[@id='md-tab-label-0-0']/div")
     private WebElement filesCurso;    
@@ -81,7 +89,6 @@ public class PojoPaginaCursosProfessor {
     private WebElement addNewFileGrup;
     @FindBy(xpath = "//*[@id=\"md-tab-content-3-3\"]/div/div[1]/i")
     private WebElement editFile;
-    
     @FindBy(className = "button-add-file waves-effect btn-flat add-file-btn")
     private List<WebElement> listAddFilesPerGrupsAndSubgrups;     
     @FindBy(className = "button-add-file waves-effect btn-flat add-subgroup-btn")
@@ -92,7 +99,6 @@ public class PojoPaginaCursosProfessor {
     private List<WebElement> listEditFileNameGrupPerGrupsAndSubgrups; 
     @FindBy(className = "material-icons action-file-icon delete-filegroup-icon")
     private List<WebElement> listRemvGrupPerGrupsAndSubgrups; 
-    
     @FindBy(xpath = "//*[@id=\"input-file-title\"]")
     private WebElement InputNameGrupFile;
     @FindBy(xpath = "//*[@id=\"put-modal-btn\"]")
@@ -106,12 +112,10 @@ public class PojoPaginaCursosProfessor {
     private WebElement addParticipantesCurso;
     @FindBy(xpath = "//*[@id=\"md-tab-content-0-4\"]/div/div[1]/i")
     private WebElement editPparticipantesCurso;
-   
     @FindBy(xpath = "//*[@id=\"inputAttenderSimple\"]")
     private WebElement emailParticipantesCurso;
     @FindBy(xpath = "//*[@id=\"put-modal-btn\"]")
     private WebElement sendConviteParticipantesCurso;
-  
     @FindBy(className = "p-name")
     private List<WebElement> listEmailParticipantes; 
     @FindBy(className = "material-icons del-attender-icon")
@@ -146,6 +150,15 @@ public class PojoPaginaCursosProfessor {
     public boolean selecionarAbaParticipantes(){
         try {
             participantesCurso.click();
+            return true;
+        } catch (Exception e) {
+            Logger.getLogger(PojoPaginaInicialProfessor.class.getName()).log(Level.SEVERE, null, e);
+            return false;
+        }
+    }
+    public boolean selecionarAbaSessions(){
+        try {
+            sessionsCurso.click();
             return true;
         } catch (Exception e) {
             Logger.getLogger(PojoPaginaInicialProfessor.class.getName()).log(Level.SEVERE, null, e);
@@ -223,5 +236,25 @@ public class PojoPaginaCursosProfessor {
             return false;
         }
     }
+    
+    public boolean criarNovaSessao(String titulo,String descricao,String data,String hora){
+       try {
+           addSessionCursoBnt.click();
+           tituloSessao.sendKeys(titulo);
+           descricaoSessao.sendKeys(descricao);
+           dataSessao.click();
+           dataSessao.click();
+           horaSessao.sendKeys(hora);
+           sendNewSession.click();
+           Thread.sleep(1000);
+           listSessions.get(listSessions.size()-1).click();
+           return (titulo.equals(tituloSessao.getText())&&descricao.equals(descricaoSessao.getText())&&data.equals(dataSessao.getText())&&hora.equals(horaSessao.getText()));
+        } catch (Exception e) {
+            Logger.getLogger(PojoPaginaInicialProfessor.class.getName()).log(Level.SEVERE, null, e);
+            return false;
+        } 
+    }
+    
+    
     
 }
