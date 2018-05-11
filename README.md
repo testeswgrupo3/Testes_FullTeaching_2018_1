@@ -18,9 +18,9 @@
 - [ ] Cadastrar varias atividades no mesmo dia
 - [ ] Visualizar atividade em um curso
 - [x] Postar comentário no fórum
-- [ ] Postar comentário em branco no fórum
+- [x] Postar comentário em branco no fórum
 - [ ] Editar um comentário no fórum
 - [ ] Enviar arquivo em curso
 - [ ] Enviar arquivo em curso com mais de 5mb
-- [ ] Cadastrar participante no curso
+- [x] Cadastrar participante no curso
 - [ ] Aterar configurações

@@ -100,17 +100,17 @@ public class PojoPaginaCursosProfessor {
    
     
     
-    @FindBy(xpath = "//*[@id='md-tab-label-0-0']/div")
+    @FindBy(xpath = "//*[@id=\"md-tab-label-0-4\"]/div/i")
     private WebElement participantesCurso;
-    @FindBy(xpath = "//*[@id=\"add-attenders-icon\"]")
+    @FindBy(xpath = "//*[@id=\"md-tab-content-0-4\"]/div/div[1]/a/i")
     private WebElement addParticipantesCurso;
-    @FindBy(xpath = "//*[@id=\"edit-attenders-icon\"]")
+    @FindBy(xpath = "//*[@id=\"md-tab-content-0-4\"]/div/div[1]/i")
     private WebElement editPparticipantesCurso;
    
-    @FindBy(xpath = "//*[@id=\"input-attender-simple\"]")
+    @FindBy(xpath = "//*[@id=\"inputAttenderSimple\"]")
     private WebElement emailParticipantesCurso;
     @FindBy(xpath = "//*[@id=\"put-modal-btn\"]")
-    private WebElement convidarParticipantesCurso;
+    private WebElement sendConviteParticipantesCurso;
   
     @FindBy(className = "p-name")
     private List<WebElement> listEmailParticipantes; 
@@ -137,6 +137,15 @@ public class PojoPaginaCursosProfessor {
     public boolean selecionarAbaForum(){
         try {
             forumCurso.click();
+            return true;
+        } catch (Exception e) {
+            Logger.getLogger(PojoPaginaInicialProfessor.class.getName()).log(Level.SEVERE, null, e);
+            return false;
+        }
+    }
+    public boolean selecionarAbaParticipantes(){
+        try {
+            participantesCurso.click();
             return true;
         } catch (Exception e) {
             Logger.getLogger(PojoPaginaInicialProfessor.class.getName()).log(Level.SEVERE, null, e);
@@ -191,11 +200,24 @@ public class PojoPaginaCursosProfessor {
     }
     
     public boolean inserirComentarioNoForum(String comentario){
-         try {
+        try {
             newCommetForumCursoBnt.click();
             inputNewComment.sendKeys(comentario);
             sendNewComment.click();
             return comentarios.get(comentarios.size()-1).getText().equals(comentario);
+        } catch (Exception e) {
+            Logger.getLogger(PojoPaginaInicialProfessor.class.getName()).log(Level.SEVERE, null, e);
+            return false;
+        }
+    }
+    
+    public boolean inserirNovoParticipante(String email){
+         try {
+            addParticipantesCurso.click();
+            emailParticipantesCurso.sendKeys(email);
+            sendConviteParticipantesCurso.click();
+            Thread.sleep(1000);
+            return listEmailParticipantes.get(listEmailParticipantes.size()-1).getText().equals(email);
         } catch (Exception e) {
             Logger.getLogger(PojoPaginaInicialProfessor.class.getName()).log(Level.SEVERE, null, e);
             return false;
