@@ -42,7 +42,7 @@ public class TesteParticipante extends Teste{
         paginaInicial.logar("teacher@gmail.com","pass");
         assertTrue(paginaInicial.checkUrl(Teste.DOMINIO)); 
         PojoPaginaInicialProfessor paginaInicialProfessor = PageFactory.initElements(super.getDriver(), PojoPaginaInicialProfessor.class);
-        assertTrue("NAO FOI POSSIVEL SELECIONAR UM CURSO",paginaInicialProfessor.cadastarNovoCurso(data+"_testeInsercaoParticipante"));
+        assertTrue("NAO FOI POSSIVEL CADASTRAR UM CURSO",paginaInicialProfessor.cadastarNovoCurso(data+"_testeInsercaoParticipante"));
         assertTrue("NAO FOI POSSIVEL SELECIONAR UM CURSO",paginaInicialProfessor.selecionarUltimoCursoCadastrado());
         
     }
@@ -65,7 +65,7 @@ public class TesteParticipante extends Teste{
     @Test
     public void cadastrarNovoParticipante(){
         PojoPaginaCursosProfessor paginaCursosProfessor = PageFactory.initElements(super.getDriver(), PojoPaginaCursosProfessor.class);
-        assertTrue("NÃO FOI POSSÍVEL IR A ABA FÓRUM",paginaCursosProfessor.selecionarAbaParticipantes());
+        assertTrue("NÃO FOI POSSÍVEL IR A ABA PARTICIPANTES",paginaCursosProfessor.selecionarAbaParticipantes());
         assertTrue("NÃO FOI POSSÍVEL CADASTRAR UM NOVO PARTICIPANTE NO CURSO",paginaCursosProfessor.inserirNovoParticipante("student1@gmail.com"));
     }
     
