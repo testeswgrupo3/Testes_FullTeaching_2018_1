@@ -23,4 +23,4 @@
 - [ ] Enviar arquivo em curso
 - [ ] Enviar arquivo em curso com mais de 5mb
 - [x] Cadastrar participante no curso
-- [ ] Aterar configurações
+- [x] Aterar configurações
