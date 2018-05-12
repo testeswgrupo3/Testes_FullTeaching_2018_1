@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -68,8 +69,8 @@ public class PojoPaginaCursosProfessor {
     private WebElement sessionsCurso;
     @FindBy(xpath = "//*[@id=\"md-tab-content-0-1\"]/div/div/a/i")
     private WebElement addSessionCursoBnt;
-    @FindBy(className = "edit-session-icon material-icons forum-icon")
-    private List<WebElement> listEditSessionCursoBnt;                       
+    @FindBy(css = "i.material-icons.forum-icon")
+    private List<WebElement> listEditSessions;                       
     @FindBy(css = "li.session-data")
     private List<WebElement> listSessions;
     @FindBy(xpath = "//*[@id=\"inputTitle\"]")
@@ -239,16 +240,17 @@ public class PojoPaginaCursosProfessor {
     
     public boolean criarNovaSessao(String titulo,String descricao,String data,String hora){
        try {
+           int tamanhoAnterior = listSessions.size();
            addSessionCursoBnt.click();
            tituloSessao.sendKeys(titulo);
            descricaoSessao.sendKeys(descricao);
-           dataSessao.click();
-           dataSessao.click();
+           //dataSessao.click();
+           dataSessao.sendKeys("2018-03-22");
            horaSessao.sendKeys(hora);
            sendNewSession.click();
            Thread.sleep(1000);
-           listSessions.get(listSessions.size()-1).click();
-           return (titulo.equals(tituloSessao.getText())&&descricao.equals(descricaoSessao.getText())&&data.equals(dataSessao.getText())&&hora.equals(horaSessao.getText()));
+           if(tamanhoAnterior==(listSessions.size()-1)) return true;
+           else return false;
         } catch (Exception e) {
             Logger.getLogger(PojoPaginaInicialProfessor.class.getName()).log(Level.SEVERE, null, e);
             return false;
