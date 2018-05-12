@@ -5,22 +5,14 @@
  */
 package testes;
 
-import java.util.Date;
-import java.util.Random;
 import util.Teste;
 import org.junit.After;
 import org.junit.AfterClass;
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import pojos.PojoPaginaCursosProfessor;
 import pojos.PojoPaginaInicial;
 import pojos.PojoPaginaInicialProfessor;
@@ -39,10 +31,10 @@ public class TesteAtividade extends Teste {
          * Levando em conta o que foi defino no testlik como pré requisito para cada tipo de teste
          * Neste em questão tem como pré requisito estar logado no sistema em uma conta de professor
          */
-        super.conectar(Teste.DOMINIO);
+        super.conectar(Teste.DOMINIO_ATLANTIS);
         PojoPaginaInicial paginaInicial = PageFactory.initElements(super.getDriver(), PojoPaginaInicial.class);
         paginaInicial.logar("teacher@gmail.com","pass");
-        assertTrue(paginaInicial.checkUrl(Teste.DOMINIO)); 
+        assertTrue(paginaInicial.checkUrl(Teste.DOMINIO_ATLANTIS)); 
          PojoPaginaInicialProfessor paginaInicialProfessor = PageFactory.initElements(super.getDriver(), PojoPaginaInicialProfessor.class);
         assertTrue("NAO FOI POSSIVEL CADASTRAR UM CURSO",paginaInicialProfessor.cadastarNovoCurso(data+"_testeCadastroAtividades"));
         assertTrue("NAO FOI POSSIVEL SELECIONAR UM CURSO",paginaInicialProfessor.selecionarUltimoCursoCadastrado());
@@ -67,5 +59,14 @@ public class TesteAtividade extends Teste {
         PojoPaginaCursosProfessor paginaCursosProfessor = PageFactory.initElements(super.getDriver(), PojoPaginaCursosProfessor.class);
         assertTrue("NÃO FOI POSSÍVEL IR A ABA SESSIONS",paginaCursosProfessor.selecionarAbaSessions());
         assertTrue("NÃO FOI POSSÍVEL CADASTRAR UMA NOVA ATIVIDADE",paginaCursosProfessor.criarNovaSessao("Sessao 1","Descricao da sessao","11-05-2018","20:50"));
+    }
+    
+    @Test
+    public void testVisualizarAtividade() throws Exception {
+        PojoPaginaInicialProfessor paginaVisualizarAtividade = PageFactory.initElements(super.getDriver(), PojoPaginaInicialProfessor.class);
+        Thread.sleep(1000);
+        assertTrue("Visualizar atividade",paginaVisualizarAtividade.selecionarAtividade());
+        Thread.sleep(1000);
+        assertTrue("Visualizar atividade",paginaVisualizarAtividade.iconeAtividade());
     }
 }
