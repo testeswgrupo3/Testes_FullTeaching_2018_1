@@ -14,8 +14,8 @@
 - [x] Cadastrar curso repetido
 - [x] Editar curso
 - [x] Inserir inforamções
-- [ ] Cadastrar atividade
-- [ ] Cadastrar varias atividades no mesmo dia
+- [x] Cadastrar atividade
+- [x] Cadastrar varias atividades no mesmo dia
 - [ ] Visualizar atividade em um curso
 - [x] Postar comentário no fórum
 - [x] Postar comentário em branco no fórum

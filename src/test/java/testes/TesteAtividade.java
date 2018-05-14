@@ -64,7 +64,7 @@ public class TesteAtividade extends Teste {
     public void cadastrarVariasAtiviadesMesmoDia() {
         PojoPaginaCursosProfessor paginaCursosProfessor = PageFactory.initElements(super.getDriver(), PojoPaginaCursosProfessor.class);
         assertTrue("NÃO FOI POSSÍVEL IR A ABA SESSIONS",paginaCursosProfessor.selecionarAbaSessions());
-        for(int i = 0;i<aleatorio.nextInt(5)+1;i++){
+        for(int i = 0;i<5;i++){
             assertTrue("NÃO FOI POSSÍVEL CADASTRAR UMA NOVA ATIVIDADE",paginaCursosProfessor.criarNovaSessao(data+"_cadastro_Varias_Atividades_"+i,"Descricao da sessao","17-05-2018","20:"+(50+i)));
         }
 
