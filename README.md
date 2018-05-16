@@ -9,32 +9,31 @@ Este trabalho tem como objetivo implementar casos de teste com a finalidade de t
 4. Lucia Pereira
 5. Luis Felipe
 
-## Casos de Testes Definidos Para Inplementação
+ ## Casos de Testes Definidos Para Inplementação
+  - ### Utilizando a Ferramenta Testlink
+    - [x] Realizar login com dados corretos
+    - [x] Realizar login com dados inválidos
+    - [x] Cadastrar um curso
+    - [x] Cadastrar curso repetido
+    - [x] Editar curso
+    - [x] Inserir informações
+    - [x] Cadastrar atividade
+    - [x] Cadastrar varias atividades no mesmo dia
+    - [ ] Visualizar atividade em um curso
+    - [x] Postar comentário no fórum
+    - [x] Postar comentário em branco no fórum
+    - [ ] Editar um comentário no fórum (funcionalidade inexistente)
+    - [ ] Enviar arquivo em curso
+    - [ ] Enviar arquivo em curso com mais de 5mb
+    - [x] Cadastrar participante no curso
+    - [x] Aterar configurações
 
- - ### Utilizando a Ferramenta Testlink
-  - [x] Realizar login com dados corretos
-  - [x] Realizar login com dados inválidos
-  - [x] Cadastrar um curso
-  - [x] Cadastrar curso repetido
-  - [x] Editar curso
-  - [x] Inserir informações
-  - [x] Cadastrar atividade
-  - [x] Cadastrar varias atividades no mesmo dia
-  - [ ] Visualizar atividade em um curso
-  - [x] Postar comentário no fórum
-  - [x] Postar comentário em branco no fórum
-  - [ ] Editar um comentário no fórum (funcionalidade inexistente)
-  - [ ] Enviar arquivo em curso
-  - [ ] Enviar arquivo em curso com mais de 5mb
-  - [x] Cadastrar participante no curso
-  - [x] Aterar configurações
+  - ### Análise Classes de Equivalência
+    - [ ] Enviar arquivo em curso com tamanho igual a 3mb
+    - [ ] Enviar arquivo em curso com tamanho igual a 6mb
+    - [ ] Cadastrar atividade em uma data inferior a atual
 
-- ### Análise Classes de Equivalência
-  - [ ] Enviar arquivo em curso com tamanho igual a 3mb
-  - [ ] Enviar arquivo em curso com tamanho igual a 6mb
-  - [ ] Cadastrar atividade em uma data inferior a atual
-
-- ### Análise de Valor Limite
-  - [ ] Enviar arquivo em curso com 0.01mb de tamanho
-  - [ ] Enviar arquivo em curso com 4.99mb de tamanho
-  - [ ] Enviar arquivo em curso com menos de 5mb de tamanho
+  - ### Análise de Valor Limite
+    - [ ] Enviar arquivo em curso com 0.01mb de tamanho
+    - [ ] Enviar arquivo em curso com 4.99mb de tamanho
+    - [ ] Enviar arquivo em curso com menos de 5mb de tamanho
