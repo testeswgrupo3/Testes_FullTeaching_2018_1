@@ -31,7 +31,7 @@ Este trabalho tem como objetivo implementar casos de teste com a finalidade de t
   - ### Análise Classes de Equivalência
     - [ ] Enviar arquivo em curso com tamanho igual a 3mb
     - [ ] Enviar arquivo em curso com tamanho igual a 6mb
-    - [ ] Cadastrar atividade em uma data inferior a atual
+    - [x] Cadastrar atividade em uma data inferior a atual
 
   - ### Análise de Valor Limite
     - [ ] Enviar arquivo em curso com 0.01mb de tamanho

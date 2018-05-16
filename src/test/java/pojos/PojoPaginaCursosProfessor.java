@@ -244,7 +244,6 @@ public class PojoPaginaCursosProfessor {
            addSessionCursoBnt.click();
            tituloSessao.sendKeys(titulo);
            descricaoSessao.sendKeys(descricao);
-           //dataSessao.click();
            dataSessao.sendKeys("2018-03-22");
            horaSessao.sendKeys(hora);
            sendNewSession.click();

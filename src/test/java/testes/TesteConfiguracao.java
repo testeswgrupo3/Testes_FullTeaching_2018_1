@@ -14,7 +14,7 @@ import util.Teste;
 
 public class TesteConfiguracao extends Teste{
     
-    private static final String URL = Teste.DOMINIO_ATLANTIS;
+    private static final String URL = Teste.DOMINIO;
     public TesteConfiguracao() {
         
     }
@@ -25,10 +25,10 @@ public class TesteConfiguracao extends Teste{
          * Levando em conta o que foi defino no testlik como pré requisito para cada tipo de teste
          * Neste em questão tem como pré requisito estar logado no sistema em uma conta de professor
          */
-        super.conectar(Teste.DOMINIO_ATLANTIS);
+        super.conectar(Teste.DOMINIO);
         PojoPaginaInicial paginaInicial = PageFactory.initElements(super.getDriver(), PojoPaginaInicial.class);
         paginaInicial.logar("student1@gmail.com","pass");
-        assertTrue(paginaInicial.checkUrl(Teste.DOMINIO_ATLANTIS));
+        assertTrue(paginaInicial.checkUrl(Teste.DOMINIO));
     }
 
     @After
