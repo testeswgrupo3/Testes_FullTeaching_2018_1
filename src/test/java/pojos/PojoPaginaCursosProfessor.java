@@ -251,11 +251,11 @@ public class PojoPaginaCursosProfessor {
             addNewFileGrup.click();
             inputGroupName.sendKeys("Teste Grupo");
             btnAddGroup.click();
-            Thread.sleep(1000);
+            Thread.sleep(3000);
             int ant = listFiles.size();
             listAddFilesPerGrupsAndSubgrups.click();
-            Thread.sleep(1000);
-            inputFile.sendKeys("/home/luisfelipe/Documents/9º\\ Período/Teste\\ de\\ Software/Testes_FullTeaching_2018_1/drivers//teste.txt");
+            inputFile.sendKeys("drivers/teste");
+
             uploadFile.click();
             Thread.sleep(10000);
             closeFile.click();

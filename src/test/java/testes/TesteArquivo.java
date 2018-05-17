@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package testes;
-import static util.Teste.data;
 import java.util.Date;
 import java.util.Random;
 import util.Teste;
