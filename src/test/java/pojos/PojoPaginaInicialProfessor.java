@@ -48,6 +48,11 @@ public class PojoPaginaInicialProfessor {
     @FindBy(css = "span.title")
     private List<WebElement> nomesCurso;
     
+    @FindBy(xpath = "/html/body/app/div/main/app-dashboard/div/div[3]/div/div[2]/div[2]/calendar-app/div/div[2]/mwl-calendar-month-view/div/div[2]/div[2]/div/mwl-calendar-month-cell[5]/div[1]")
+    private WebElement dia;
+    @FindBy(xpath = "/html/body/app/div/main/app-dashboard/div/div[3]/div/div[2]/div[2]/calendar-app/div/div[2]/mwl-calendar-month-view/div/div[2]/div[2]/mwl-calendar-open-day-events/div/div/mwl-calendar-event-actions/span/a")
+    private WebElement arrow;
+    
     private final WebDriver driver;
 
     public PojoPaginaInicialProfessor(WebDriver driver) {
@@ -95,6 +100,16 @@ public class PojoPaginaInicialProfessor {
              Logger.getLogger(PojoPaginaInicialProfessor.class.getName()).log(Level.SEVERE, null, e);
              return false;
         }
+    }
+    
+    public boolean selecionarAtividade(){
+        this.dia.click();
+        return true;
+    }
+    
+    public boolean iconeAtividade(){
+        this.arrow.click();
+        return true;
     }
     
 }
