@@ -71,21 +71,21 @@ public class PojoPaginaCursosProfessor {
     @FindBy(xpath = "//*[@id=\"post-modal-btn\"]")
     private WebElement sendNewSession;
     
-    @FindBy(xpath = "//*[@id='md-tab-label-0-0']/div")
+    @FindBy(xpath = "//*[@id=\"md-tab-label-0-3\"]/div")
     private WebElement filesCurso;    
-    @FindBy(xpath = "//*[@id=\"add-files-icon\"]") 
+    @FindBy(xpath = "//*[@id=\"md-tab-content-0-3\"]/div/div[1]/a/i") 
     private WebElement addNewFileGrup;
-    @FindBy(xpath = "//*[@id=\"input-post-title\"]") 
+    @FindBy(xpath = "//*[@id=\"inputTitle\"]") 
     private WebElement inputGroupName;
     @FindBy(xpath = "//*[@id=\"post-modal-btn\"]")
     private WebElement btnAddGroup;
     @FindBy(xpath = "//*[@id=\"md-tab-content-3-3\"]/div/div[1]/i")
     private WebElement editFile;
-    @FindBy(className = "button-add-file waves-effect btn-flat add-file-btn")
-    private List<WebElement> listAddFilesPerGrupsAndSubgrups; 
+    @FindBy(xpath = "//*[@id=\"md-tab-content-0-3\"]/div/div[2]/app-file-group/div/div[1]/div[2]/a[1]")
+    private WebElement listAddFilesPerGrupsAndSubgrups; 
     @FindBy(className = "button-add-file waves-effect btn-flat add-subgroup-btn")
     private List<WebElement> listAddSubgrupPerGrupsAndSubgrups;   
-    @FindBy(className = "label-input-file waves-effect btn")
+    @FindBy(xpath = "//*[@id=\"input-file-1\"]")
     private WebElement inputFile; 
     @FindBy(className = "btn button-small btn-uploader")
     private WebElement uploadFile; 
@@ -251,10 +251,11 @@ public class PojoPaginaCursosProfessor {
             addNewFileGrup.click();
             inputGroupName.sendKeys("Teste Grupo");
             btnAddGroup.click();
-            Thread.sleep(3000);
+            Thread.sleep(1000);
             int ant = listFiles.size();
-            listAddFilesPerGrupsAndSubgrups.get(listAddFilesPerGrupsAndSubgrups.size()-1).click();
-            inputFile.sendKeys("drivers/teste");
+            listAddFilesPerGrupsAndSubgrups.click();
+            Thread.sleep(1000);
+            inputFile.sendKeys("/home/luisfelipe/Documents/9º\\ Período/Teste\\ de\\ Software/Testes_FullTeaching_2018_1/drivers//teste.txt");
             uploadFile.click();
             Thread.sleep(10000);
             closeFile.click();
