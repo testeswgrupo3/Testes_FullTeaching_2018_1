@@ -85,14 +85,26 @@ public class PojoPaginaCursosProfessor {
     
     @FindBy(xpath = "//*[@id='md-tab-label-0-0']/div")
     private WebElement filesCurso;    
-    @FindBy(xpath = "//*[@id=\"add-files-icon\"]")
+    @FindBy(xpath = "//*[@id=\"add-files-icon\"]") 
     private WebElement addNewFileGrup;
+    @FindBy(xpath = "//*[@id=\"input-post-title\"]") 
+    private WebElement inputGroupName;
+    @FindBy(xpath = "//*[@id=\"post-modal-btn\"]")
+    private WebElement btnAddGroup;
     @FindBy(xpath = "//*[@id=\"md-tab-content-3-3\"]/div/div[1]/i")
     private WebElement editFile;
     @FindBy(className = "button-add-file waves-effect btn-flat add-file-btn")
-    private List<WebElement> listAddFilesPerGrupsAndSubgrups;     
+    private List<WebElement> listAddFilesPerGrupsAndSubgrups; 
     @FindBy(className = "button-add-file waves-effect btn-flat add-subgroup-btn")
     private List<WebElement> listAddSubgrupPerGrupsAndSubgrups;   
+    @FindBy(className = "label-input-file waves-effect btn")
+    private WebElement inputFile; 
+    @FindBy(className = "btn button-small btn-uploader")
+    private WebElement uploadFile; 
+    @FindBy(className = "close-upload-modal-btn")
+    private WebElement closeFile; 
+    @FindBy(className = "chip chip-file truncate valign-wrapper disp-inline-flex")
+    private List<WebElement> listFiles;    
     @FindBy(className = "material-icons action-file-icon")
     private List<WebElement> listEditNameGrupPerGrupsAndSubgrups;    
     @FindBy(className = "edit-file-name-icon material-icons action-file-icon")
@@ -165,6 +177,15 @@ public class PojoPaginaCursosProfessor {
             return false;
         }
     }
+        public boolean selecionarAbaArquivos(){
+        try {
+            filesCurso.click();
+            return true;
+        } catch (Exception e) {
+            Logger.getLogger(PojoPaginaInicialProfessor.class.getName()).log(Level.SEVERE, null, e);
+            return false;
+        }
+    }
     public boolean iniciarForum(String titulo,String comentario){
         try {
             try {
@@ -231,6 +252,27 @@ public class PojoPaginaCursosProfessor {
             sendConviteParticipantesCurso.click();
             Thread.sleep(1000);
             return listEmailParticipantes.get(listEmailParticipantes.size()-1).getText().equals(email);
+        } catch (Exception e) {
+            Logger.getLogger(PojoPaginaInicialProfessor.class.getName()).log(Level.SEVERE, null, e);
+            return false;
+        }
+    }
+    
+    public boolean inserirNovoArquivo(){
+         try {
+            addNewFileGrup.click();
+            inputGroupName.sendKeys("Teste Grupo");
+            btnAddGroup.click();
+            Thread.sleep(3000);
+            int ant = listFiles.size();
+            listAddFilesPerGrupsAndSubgrups.get(listAddFilesPerGrupsAndSubgrups.size()-1).click();
+            inputFile.sendKeys("drivers/teste");
+            uploadFile.click();
+            Thread.sleep(10000);
+            closeFile.click();
+            if(listFiles.size() > ant)
+                return true;
+            return false;
         } catch (Exception e) {
             Logger.getLogger(PojoPaginaInicialProfessor.class.getName()).log(Level.SEVERE, null, e);
             return false;
