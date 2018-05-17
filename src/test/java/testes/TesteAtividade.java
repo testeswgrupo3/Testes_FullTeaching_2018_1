@@ -1,10 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package testes;
-
 import util.Teste;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -17,10 +11,7 @@ import org.openqa.selenium.support.PageFactory;
 import pojos.PojoPaginaCursosProfessor;
 import pojos.PojoPaginaInicial;
 import pojos.PojoPaginaInicialProfessor;
-/**
- *
- * @author luisfelipe
- */
+
 public class TesteAtividade extends Teste {
     public TesteAtividade() {
         
@@ -28,10 +19,6 @@ public class TesteAtividade extends Teste {
     
     @Before
     public void before() {
-        /**
-         * Levando em conta o que foi defino no testlik como pré requisito para cada tipo de teste
-         * Neste em questão tem como pré requisito estar logado no sistema em uma conta de professor
-         */
         super.conectar(Teste.DOMINIO);
         PojoPaginaInicial paginaInicial = PageFactory.initElements(super.getDriver(), PojoPaginaInicial.class);
         paginaInicial.logar("teacher@gmail.com","pass");

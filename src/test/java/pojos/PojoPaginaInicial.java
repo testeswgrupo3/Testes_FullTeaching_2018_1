@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package pojos;
 
 import java.util.logging.Level;
@@ -13,10 +8,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-/**
- *
- * @author luisfelipe
- */
 public class PojoPaginaInicial {
     @FindBy(name= "password")
     private WebElement password;

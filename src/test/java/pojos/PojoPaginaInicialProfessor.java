@@ -1,11 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package pojos;
-
-
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -48,10 +41,10 @@ public class PojoPaginaInicialProfessor {
     @FindBy(css = "span.title")
     private List<WebElement> nomesCurso;
     
-    @FindBy(xpath = "/html/body/app/div/main/app-dashboard/div/div[3]/div/div[2]/div[2]/calendar-app/div/div[2]/mwl-calendar-month-view/div/div[2]/div[2]/div/mwl-calendar-month-cell[5]/div[1]")
-    private WebElement dia;
-    @FindBy(xpath = "/html/body/app/div/main/app-dashboard/div/div[3]/div/div[2]/div[2]/calendar-app/div/div[2]/mwl-calendar-month-view/div/div[2]/div[2]/mwl-calendar-open-day-events/div/div/mwl-calendar-event-actions/span/a")
-    private WebElement arrow;
+    @FindBy(css = "span.cal-day-badge")
+    private List<WebElement> diasAtv;
+    @FindBy(css = "i.material-icons calendar-event-icon")
+    private List<WebElement> visualizarEvento;
     
     private final WebDriver driver;
 
@@ -103,12 +96,12 @@ public class PojoPaginaInicialProfessor {
     }
     
     public boolean selecionarAtividade(){
-        this.dia.click();
+        this.diasAtv.get(0).click();
         return true;
     }
     
     public boolean iconeAtividade(){
-        this.arrow.click();
+        this.visualizarEvento.get(0).click();
         return true;
     }
     

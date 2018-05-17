@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package pojos;
 
 import java.util.List;
@@ -16,12 +11,6 @@ import org.openqa.selenium.support.FindBy;
 
 
 public class PojoPaginaCursosProfessor {
-    /**
-    * Visa representar as paginas apos um professor selecionar um curso 
-    * é onde aparece as diversas abas como forum, atividades, arquivos,participantes, seção
-    * não sei se é necessário criar uma para cada uma dessas abas
-    * @author luisfelipe
-    */
     @FindBy(xpath = " //*[@id='md-tab-label-0-0']/div")
     private WebElement homeCurso;
     @FindBy(xpath = " //*[@id=\"edit-course-info\"]")
@@ -30,8 +19,6 @@ public class PojoPaginaCursosProfessor {
     private WebElement texBoxInfoCurso;
     @FindBy(xpath = "//*[@id='send-info-btn']")
     private WebElement sendInfoCurso;
-    /*@FindBy(xpath = "//*[@id=\"md-tab-content-1-0\"]/div/div[2]/p[1]") /// caso o curso tenha informacao vai ser carregado se nao tiver  nao encontra esse elemento
-    private WebElement infoCurso;*/
     
     @FindBy(xpath = "//*[@id=\"md-tab-label-0-2\"]/div")
     private WebElement forumCurso;

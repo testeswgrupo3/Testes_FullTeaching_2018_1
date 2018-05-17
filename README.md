@@ -22,7 +22,7 @@ Este trabalho tem como objetivo implementar casos de teste com a finalidade de t
     - [ ] Visualizar atividade em um curso
     - [x] Postar comentário no fórum
     - [x] Postar comentário em branco no fórum
-    - [ ] Editar um comentário no fórum (funcionalidade inexistente)
+    - [ ] ~~Editar um comentário no fórum~~ (funcionalidade inexistente)
     - [ ] Enviar arquivo em curso
     - [ ] Enviar arquivo em curso com mais de 5mb
     - [x] Cadastrar participante no curso
